@@ -1,8 +1,11 @@
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
 import { AnimatedCount } from "./AnimatedCount";
 import { ProjectSkeleton } from "./ProjectSkeleton";
-import { ExternalLink, Github } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ProjectModal } from "./ProjectModal";
+import { ProjectsEmptyState } from "./ProjectsEmptyState";
+import type { Category, Project } from "./project-types";
+import { ExternalLink, Eye, Github } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import dashboardImg from "@/assets/project-dashboard.jpg";
 import commerceImg from "@/assets/project-commerce.jpg";
 import chatImg from "@/assets/project-chat.jpg";
@@ -11,79 +14,175 @@ import fitnessImg from "@/assets/project-fitness.jpg";
 import saasImg from "@/assets/project-saas.jpg";
 import { useI18n } from "@/lib/i18n";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-
-type Category = "react" | "next" | "native";
-
-type Project = {
-  title: string;
-  descEn: string;
-  descAr: string;
-  stack: string[];
-  link: string;
-  repo: string;
-  image: string;
-  category: Category;
-};
+import { useDeviceTier } from "@/hooks/use-device-tier";
 
 const projects: Project[] = [
   {
+    id: "nova",
     title: "Nova Dashboard",
     descEn: "Analytics dashboard with real-time charts, dark mode and responsive layouts.",
     descAr: "لوحة تحليلات بمخططات حية، وضع داكن، وتصميم متجاوب.",
-    stack: ["React", "TypeScript", "Tailwind", "Recharts"],
+    longEn:
+      "Nova is an analytics dashboard built for SaaS teams. It features streaming charts, configurable widgets, and a fully theme-aware design system. Optimised for fast first paint and smooth interactivity even on large datasets.",
+    longAr:
+      "نوفا لوحة تحليلات لفِرق SaaS، تتميز بمخططات حيّة، عناصر قابلة للتخصيص، ونظام تصميم متجاوب مع الثيمات. مُحسَّنة لسرعة العرض وسلاسة التفاعل حتى مع البيانات الكبيرة.",
+    highlightsEn: [
+      "Real-time charts with WebSocket streams",
+      "95+ Lighthouse performance score",
+      "Theme-aware design tokens",
+      "Drag-and-drop widget grid",
+    ],
+    highlightsAr: [
+      "مخططات حيّة عبر WebSocket",
+      "نتيجة Lighthouse 95+",
+      "نظام تصميم متجاوب مع الثيمات",
+      "ترتيب العناصر بالسحب والإفلات",
+    ],
+    stack: ["React", "TypeScript", "Tailwind", "Recharts", "Vite"],
     link: "#",
     repo: "#",
-    image: dashboardImg,
+    cover: dashboardImg,
+    gallery: [dashboardImg, saasImg, portfolioImg],
     category: "react",
   },
   {
+    id: "lumen",
     title: "Lumen Commerce",
     descEn: "Headless storefront with optimized SSR, cart state and Stripe checkout.",
     descAr: "متجر إلكتروني بـ SSR مُحسّن، حالة سلة، ودفع عبر Stripe.",
-    stack: ["Next.js", "Zustand", "Stripe"],
+    longEn:
+      "Lumen is a headless storefront powered by Next.js App Router. It pairs streaming SSR with persistent cart state and a Stripe-powered checkout to deliver a fast, conversion-focused shopping experience.",
+    longAr:
+      "متجر إلكتروني مبني على Next.js App Router، يجمع بين الـ SSR التدريجي وسلة دائمة ودفع عبر Stripe لتجربة تسوق سريعة ومُحسَّنة للتحويل.",
+    highlightsEn: [
+      "Streaming SSR with React Server Components",
+      "Persistent cart synced across devices",
+      "Stripe checkout with Apple/Google Pay",
+      "Lighthouse 98/100 mobile",
+    ],
+    highlightsAr: [
+      "SSR تدريجي مع React Server Components",
+      "سلة دائمة تتزامن بين الأجهزة",
+      "دفع Stripe مع Apple/Google Pay",
+      "Lighthouse 98/100 على الموبايل",
+    ],
+    stack: ["Next.js", "Zustand", "Stripe", "Tailwind"],
     link: "#",
     repo: "#",
-    image: commerceImg,
+    cover: commerceImg,
+    gallery: [commerceImg, saasImg, dashboardImg],
     category: "next",
   },
   {
+    id: "pulse",
     title: "Pulse Chat",
     descEn: "Cross-platform mobile chat with optimistic UI, typing indicators and presence.",
     descAr: "تطبيق محادثات للموبايل مع واجهة تفاعلية ومؤشرات الكتابة.",
-    stack: ["React Native", "Expo", "Socket.io"],
+    longEn:
+      "Pulse is a cross-platform chat app built with React Native and Expo. It supports optimistic message sends, typing indicators, presence, and end-to-end encrypted DMs with a smooth, native-feeling animation system.",
+    longAr:
+      "تطبيق محادثات متعدد المنصّات مبني بـ React Native و Expo، يدعم الإرسال التفاؤلي، مؤشرات الكتابة، التواجد، ورسائل خاصة مشفّرة من طرف لطرف بحركات سلسة.",
+    highlightsEn: [
+      "Optimistic UI with offline queue",
+      "Realtime presence & typing indicators",
+      "End-to-end encrypted DMs",
+      "60fps Reanimated transitions",
+    ],
+    highlightsAr: [
+      "واجهة تفاؤلية مع طابور Offline",
+      "تواجد ومؤشرات كتابة فوريّة",
+      "محادثات خاصة مشفّرة E2E",
+      "حركات Reanimated بـ 60fps",
+    ],
+    stack: ["React Native", "Expo", "Socket.io", "Reanimated"],
     link: "#",
     repo: "#",
-    image: chatImg,
+    cover: chatImg,
+    gallery: [chatImg, fitnessImg],
     category: "native",
   },
   {
+    id: "atlas",
     title: "Atlas Portfolio",
     descEn: "Animated portfolio template with smooth scroll and theme system.",
     descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    stack: ["Next.js", "GSAP", "Tailwind"],
+    longEn:
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+    longAr:
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+    highlightsEn: [
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
+    ],
+    highlightsAr: [
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+    ],
+    stack: ["Next.js", "GSAP", "Tailwind", "MDX"],
     link: "#",
     repo: "#",
-    image: portfolioImg,
+    cover: portfolioImg,
+    gallery: [portfolioImg, saasImg, dashboardImg],
     category: "next",
   },
   {
+    id: "fittrack",
     title: "FitTrack Mobile",
     descEn: "Workout tracker with offline-first sync, charts, and haptic feedback.",
     descAr: "متتبّع تمارين يعمل دون اتصال، مع مخططات وردود حسّية.",
-    stack: ["React Native", "Reanimated", "SQLite"],
+    longEn:
+      "FitTrack is an offline-first workout tracker. Sessions log locally and sync seamlessly when online, with detailed progress charts, haptic feedback, and adaptive workout suggestions.",
+    longAr:
+      "متتبّع تمارين يعمل دون اتصال أولاً، يسجّل الجلسات محليًا ويتزامن لحظة الاتصال، مع رسوم تقدّم تفصيلية، ردود حسّية، واقتراحات تمارين تكيّفية.",
+    highlightsEn: [
+      "Offline-first with SQLite sync",
+      "Adaptive workout suggestions",
+      "Animated progress charts",
+      "Haptic & audio feedback",
+    ],
+    highlightsAr: [
+      "Offline-first مع مزامنة SQLite",
+      "اقتراحات تمارين تكيّفية",
+      "رسوم تقدّم متحركة",
+      "ردود حسّية وصوتية",
+    ],
+    stack: ["React Native", "Reanimated", "SQLite", "Expo"],
     link: "#",
     repo: "#",
-    image: fitnessImg,
+    cover: fitnessImg,
+    gallery: [fitnessImg, chatImg],
     category: "native",
   },
   {
+    id: "stack-saas",
     title: "Stack SaaS",
     descEn: "Marketing site with MDX blog, dynamic OG images and edge rendering.",
     descAr: "موقع تسويقي بمدونة MDX، صور OG ديناميكية، وعرض على الـ Edge.",
-    stack: ["React", "Vite", "Framer Motion"],
+    longEn:
+      "Stack SaaS is a marketing site that pairs an MDX-powered blog with dynamic OG image generation and edge rendering for instant page loads worldwide.",
+    longAr:
+      "موقع تسويقي يجمع مدوّنة MDX بصور OG ديناميكية وعرض على الـ Edge لتحميل فوري حول العالم.",
+    highlightsEn: [
+      "MDX blog with custom components",
+      "Dynamic Open Graph image API",
+      "Edge-rendered with global CDN",
+      "Subtle Framer Motion choreography",
+    ],
+    highlightsAr: [
+      "مدوّنة MDX بمكوّنات مخصصة",
+      "API ديناميكي لصور Open Graph",
+      "عرض على الـ Edge مع CDN عالمي",
+      "حركات Framer Motion هادئة",
+    ],
+    stack: ["React", "Vite", "Framer Motion", "MDX"],
     link: "#",
     repo: "#",
-    image: saasImg,
+    cover: saasImg,
+    gallery: [saasImg, portfolioImg, dashboardImg],
     category: "react",
   },
 ];
@@ -91,8 +190,10 @@ const projects: Project[] = [
 export function Projects() {
   const { t, lang } = useI18n();
   const reduced = usePrefersReducedMotion();
+  const tier = useDeviceTier();
   const [active, setActive] = useState<"all" | Category>("all");
   const [loading, setLoading] = useState(false);
+  const [openProject, setOpenProject] = useState<Project | null>(null);
 
   const filters: { value: "all" | Category; label: string }[] = [
     { value: "all", label: t("projects.filter.all") },
@@ -101,15 +202,38 @@ export function Projects() {
     { value: "native", label: "React Native" },
   ];
 
-  const filtered = active === "all" ? projects : projects.filter((p) => p.category === active);
+  const filtered = useMemo(
+    () => (active === "all" ? projects : projects.filter((p) => p.category === active)),
+    [active],
+  );
 
-  // Brief skeleton flash on filter change to make UI feel snappy and intentional.
+  // Adaptive skeleton: skip on fast devices, short on normal, longer on slow.
+  const skeletonMs = reduced ? 0 : tier === "fast" ? 0 : tier === "slow" ? 520 : 280;
+
   useEffect(() => {
-    if (reduced) return;
+    if (skeletonMs === 0) {
+      setLoading(false);
+      return;
+    }
     setLoading(true);
-    const id = setTimeout(() => setLoading(false), 320);
+    const id = setTimeout(() => setLoading(false), skeletonMs);
     return () => clearTimeout(id);
-  }, [active, reduced]);
+  }, [active, skeletonMs]);
+
+  const suggestions = filters
+    .filter((f) => f.value !== active && f.value !== "all")
+    .map((f) => ({
+      value: f.value,
+      label: f.label,
+      count:
+        f.value === "all"
+          ? projects.length
+          : projects.filter((p) => p.category === f.value).length,
+    }))
+    .filter((s) => s.count > 0)
+    .slice(0, 3);
+
+  const skeletonCount = Math.min(Math.max(filtered.length || 3, 3), 6);
 
   return (
     <section id="projects" className="py-24 bg-muted/30">
@@ -179,95 +303,119 @@ export function Projects() {
 
           <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout" initial={false}>
-              {loading
-                ? Array.from({ length: Math.max(filtered.length, 3) }).map((_, i) => (
-                    <motion.div
-                      key={`skeleton-${i}`}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2, delay: i * 0.04 }}
-                    >
-                      <ProjectSkeleton />
-                    </motion.div>
-                  ))
-                : filtered.map((p, i) => (
-                    <motion.article
-                      key={p.title}
-                      layout
-                      initial={reduced ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.96 }}
-                      animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
-                      exit={reduced ? { opacity: 0 } : { opacity: 0, y: -20, scale: 0.96 }}
-                      transition={{
-                        duration: reduced ? 0.15 : 0.4,
-                        delay: reduced ? 0 : i * 0.05,
-                        ease: "easeOut",
-                      }}
-                      whileHover={reduced ? undefined : { y: -6 }}
-                      className="group relative rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-shadow overflow-hidden flex flex-col"
-                    >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                    <motion.img
-                      src={p.image}
-                      alt={p.title}
-                      loading="lazy"
-                      width={1280}
-                      height={800}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
-                    <span className="absolute top-3 start-3 text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-background/80 backdrop-blur border border-border font-medium">
-                      {p.category === "next"
-                        ? "Next.js"
-                        : p.category === "native"
-                          ? "React Native"
-                          : "React"}
-                    </span>
-                  </div>
-
-                  <div className="relative p-6 flex flex-col flex-1">
-                    <div
-                      aria-hidden
-                      className="absolute -top-20 -end-20 h-44 w-44 rounded-full opacity-0 group-hover:opacity-100 transition-opacity blur-3xl pointer-events-none"
-                      style={{ background: "var(--gradient-primary)" }}
-                    />
-                    <div className="relative">
-                      <h3 className="text-xl font-semibold">{p.title}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        {lang === "ar" ? p.descAr : p.descEn}
-                      </p>
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {p.stack.map((s) => (
-                          <span
-                            key={s}
-                            className="text-xs px-2 py-0.5 rounded-full bg-accent text-accent-foreground"
-                          >
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="mt-5 flex gap-4 text-sm">
-                        <a
-                          href={p.link}
-                          className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors"
-                        >
-                          {t("projects.live")} <ExternalLink className="h-3.5 w-3.5" />
-                        </a>
-                        <a
-                          href={p.repo}
-                          className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {t("projects.code")} <Github className="h-3.5 w-3.5" />
-                        </a>
+              {loading ? (
+                Array.from({ length: skeletonCount }).map((_, i) => (
+                  <motion.div
+                    key={`skeleton-${i}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2, delay: i * 0.04 }}
+                  >
+                    <ProjectSkeleton tier={tier} />
+                  </motion.div>
+                ))
+              ) : filtered.length === 0 ? (
+                <ProjectsEmptyState
+                  key="empty"
+                  suggestions={suggestions}
+                  onPick={(v) => setActive(v as "all" | Category)}
+                />
+              ) : (
+                filtered.map((p, i) => (
+                  <motion.article
+                    key={p.id}
+                    layout
+                    initial={reduced ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.96 }}
+                    animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+                    exit={reduced ? { opacity: 0 } : { opacity: 0, y: -20, scale: 0.96 }}
+                    transition={{
+                      duration: reduced ? 0.15 : 0.4,
+                      delay: reduced ? 0 : i * 0.05,
+                      ease: "easeOut",
+                    }}
+                    whileHover={reduced ? undefined : { y: -6 }}
+                    onClick={() => setOpenProject(p)}
+                    className="group relative rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-shadow overflow-hidden flex flex-col cursor-pointer text-start"
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                      <motion.img
+                        src={p.cover}
+                        alt={p.title}
+                        loading="lazy"
+                        width={1280}
+                        height={800}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+                      <span className="absolute top-3 start-3 text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-background/80 backdrop-blur border border-border font-medium">
+                        {p.category === "next"
+                          ? "Next.js"
+                          : p.category === "native"
+                            ? "React Native"
+                            : "React"}
+                      </span>
+                      {/* Quick view affordance */}
+                      <div className="absolute inset-0 grid place-items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur border border-border text-xs font-medium">
+                          <Eye className="h-3.5 w-3.5" />
+                          {lang === "ar" ? "عرض التفاصيل" : "View details"}
+                        </span>
                       </div>
                     </div>
-                  </div>
-                </motion.article>
-              ))}
+
+                    <div className="relative p-6 flex flex-col flex-1">
+                      <div
+                        aria-hidden
+                        className="absolute -top-20 -end-20 h-44 w-44 rounded-full opacity-0 group-hover:opacity-100 transition-opacity blur-3xl pointer-events-none"
+                        style={{ background: "var(--gradient-primary)" }}
+                      />
+                      <div className="relative">
+                        <h3 className="text-xl font-semibold">{p.title}</h3>
+                        <p className="mt-2 text-sm text-muted-foreground">
+                          {lang === "ar" ? p.descAr : p.descEn}
+                        </p>
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {p.stack.slice(0, 4).map((s) => (
+                            <span
+                              key={s}
+                              className="text-xs px-2 py-0.5 rounded-full bg-accent text-accent-foreground"
+                            >
+                              {s}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="mt-5 flex gap-4 text-sm">
+                          <a
+                            href={p.link}
+                            onClick={(e) => e.stopPropagation()}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors"
+                          >
+                            {t("projects.live")} <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
+                          <a
+                            href={p.repo}
+                            onClick={(e) => e.stopPropagation()}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            {t("projects.code")} <Github className="h-3.5 w-3.5" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+                ))
+              )}
             </AnimatePresence>
           </motion.div>
         </LayoutGroup>
       </div>
+
+      <ProjectModal project={openProject} onClose={() => setOpenProject(null)} />
     </section>
   );
 }

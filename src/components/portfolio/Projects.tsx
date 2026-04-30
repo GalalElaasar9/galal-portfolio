@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
+import { AnimatedCount } from "./AnimatedCount";
 import { ExternalLink, Github } from "lucide-react";
 import { useState } from "react";
 import dashboardImg from "@/assets/project-dashboard.jpg";
@@ -141,13 +142,14 @@ export function Projects() {
                   )}
                   <span className="relative inline-flex items-center gap-1.5">
                     {f.label}
-                    <span
-                      className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                    <motion.span
+                      layout
+                      className={`text-[10px] min-w-[1.25rem] text-center px-1.5 py-0.5 rounded-full ${
                         isActive ? "bg-white/25" : "bg-muted text-muted-foreground"
                       }`}
                     >
-                      {count}
-                    </span>
+                      <AnimatedCount value={count} />
+                    </motion.span>
                   </span>
                 </button>
               );

@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
-import { Moon, Sun } from "lucide-react";
+import { Languages, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
-
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
-];
+import { useI18n } from "@/lib/i18n";
 
 export function Navbar() {
   const { theme, toggle } = useTheme();
+  const { t, lang, toggle: toggleLang } = useI18n();
+
+  const links = [
+    { href: "#about", label: t("nav.about") },
+    { href: "#experience", label: t("nav.experience") },
+    { href: "#projects", label: t("nav.projects") },
+    { href: "#services", label: t("nav.services") },
+    { href: "#contact", label: t("nav.contact") },
+  ];
+
   return (
     <motion.header
       initial={{ y: -30, opacity: 0 }}
@@ -22,7 +26,7 @@ export function Navbar() {
         <a href="#hero" className="font-semibold tracking-tight">
           <span className="text-gradient">Galal</span>.dev
         </a>
-        <ul className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+        <ul className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {links.map((l) => (
             <li key={l.href}>
               <a
@@ -34,13 +38,23 @@ export function Navbar() {
             </li>
           ))}
         </ul>
-        <button
-          onClick={toggle}
-          aria-label="Toggle theme"
-          className="h-9 w-9 grid place-items-center rounded-full border border-border hover:border-primary/60 hover:text-primary transition-colors"
-        >
-          {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleLang}
+            aria-label="Toggle language"
+            className="h-9 px-3 inline-flex items-center gap-1.5 rounded-full border border-border hover:border-primary/60 hover:text-primary transition-colors text-xs font-medium"
+          >
+            <Languages className="h-3.5 w-3.5" />
+            {lang === "en" ? "AR" : "EN"}
+          </button>
+          <button
+            onClick={toggle}
+            aria-label="Toggle theme"
+            className="h-9 w-9 grid place-items-center rounded-full border border-border hover:border-primary/60 hover:text-primary transition-colors"
+          >
+            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+        </div>
       </nav>
     </motion.header>
   );

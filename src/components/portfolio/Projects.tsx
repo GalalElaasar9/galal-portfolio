@@ -1,7 +1,8 @@
 import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
 import { AnimatedCount } from "./AnimatedCount";
+import { ProjectSkeleton } from "./ProjectSkeleton";
 import { ExternalLink, Github } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dashboardImg from "@/assets/project-dashboard.jpg";
 import commerceImg from "@/assets/project-commerce.jpg";
 import chatImg from "@/assets/project-chat.jpg";
@@ -9,6 +10,7 @@ import portfolioImg from "@/assets/project-portfolio.jpg";
 import fitnessImg from "@/assets/project-fitness.jpg";
 import saasImg from "@/assets/project-saas.jpg";
 import { useI18n } from "@/lib/i18n";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 type Category = "react" | "next" | "native";
 
@@ -88,7 +90,9 @@ const projects: Project[] = [
 
 export function Projects() {
   const { t, lang } = useI18n();
+  const reduced = usePrefersReducedMotion();
   const [active, setActive] = useState<"all" | Category>("all");
+  const [loading, setLoading] = useState(false);
 
   const filters: { value: "all" | Category; label: string }[] = [
     { value: "all", label: t("projects.filter.all") },
@@ -98,6 +102,14 @@ export function Projects() {
   ];
 
   const filtered = active === "all" ? projects : projects.filter((p) => p.category === active);
+
+  // Brief skeleton flash on filter change to make UI feel snappy and intentional.
+  useEffect(() => {
+    if (reduced) return;
+    setLoading(true);
+    const id = setTimeout(() => setLoading(false), 320);
+    return () => clearTimeout(id);
+  }, [active, reduced]);
 
   return (
     <section id="projects" className="py-24 bg-muted/30">

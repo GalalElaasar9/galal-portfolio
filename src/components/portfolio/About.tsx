@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
-
-const stats = [
-  { label: "Years coding", value: "3+" },
-  { label: "Projects shipped", value: "20+" },
-  { label: "Happy clients", value: "15+" },
-];
+import { useI18n } from "@/lib/i18n";
 
 export function About() {
+  const { t } = useI18n();
+  const stats = [
+    { label: t("about.stat.years"), value: "3+" },
+    { label: t("about.stat.projects"), value: "20+" },
+    { label: t("about.stat.clients"), value: "15+" },
+  ];
+
   return (
     <section id="about" className="py-24">
       <div className="max-w-4xl mx-auto px-6">
@@ -16,7 +18,7 @@ export function About() {
           viewport={{ once: true, margin: "-80px" }}
           className="text-sm font-medium text-primary tracking-widest uppercase"
         >
-          About Me
+          {t("about.kicker")}
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -25,7 +27,7 @@ export function About() {
           transition={{ delay: 0.05 }}
           className="mt-3 text-3xl md:text-4xl font-bold tracking-tight"
         >
-          Building the web, one component at a time.
+          {t("about.title")}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -34,11 +36,7 @@ export function About() {
           transition={{ delay: 0.1 }}
           className="mt-5 text-lg text-muted-foreground leading-relaxed"
         >
-          I'm a Front-End Developer specializing in the React ecosystem. I started my journey
-          captivated by the way thoughtful UI can turn complex products into delightful
-          experiences. Today I focus on shipping high-performance interfaces with React,
-          Next.js, and TypeScript — backed by clean architecture, accessibility, and motion
-          that feels natural.
+          {t("about.body")}
         </motion.p>
 
         <div className="mt-10 grid grid-cols-3 gap-4">

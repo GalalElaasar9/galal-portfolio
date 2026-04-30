@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useI18n } from "@/lib/i18n";
 
 const skills = [
   { name: "React", level: 95 },
@@ -12,12 +13,17 @@ const skills = [
 const tools = ["JavaScript", "HTML5", "CSS3", "Git", "Figma", "Vite", "Redux", "REST", "GraphQL"];
 
 export function Skills() {
+  const { t } = useI18n();
   return (
     <section id="skills" className="py-24">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-12">
-          <p className="text-sm font-medium text-primary tracking-widest uppercase">Skills</p>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">What I work with</h2>
+          <p className="text-sm font-medium text-primary tracking-widest uppercase">
+            {t("skills.kicker")}
+          </p>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
+            {t("skills.title")}
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-x-10 gap-y-6">
@@ -48,9 +54,9 @@ export function Skills() {
         </div>
 
         <div className="mt-12 flex flex-wrap justify-center gap-2">
-          {tools.map((t, i) => (
+          {tools.map((tool, i) => (
             <motion.span
-              key={t}
+              key={tool}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -58,7 +64,7 @@ export function Skills() {
               whileHover={{ y: -3, scale: 1.05 }}
               className="px-3.5 py-1.5 rounded-full border border-border bg-card text-sm hover:border-primary/60 hover:text-primary transition-colors cursor-default"
             >
-              {t}
+              {tool}
             </motion.span>
           ))}
         </div>

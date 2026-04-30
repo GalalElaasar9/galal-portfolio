@@ -127,7 +127,7 @@ export function Projects() {
         </div>
 
         <LayoutGroup>
-          <div className="flex flex-wrap gap-2 mb-10">
+          <motion.div layout className="flex flex-wrap gap-2 mb-10">
             {filters.map((f) => {
               const isActive = active === f.value;
               const count =
@@ -135,9 +135,13 @@ export function Projects() {
                   ? projects.length
                   : projects.filter((p) => p.category === f.value).length;
               return (
-                <button
+                <motion.button
                   key={f.value}
+                  layout
                   onClick={() => setActive(f.value)}
+                  whileHover={reduced ? undefined : { y: -1 }}
+                  whileTap={reduced ? undefined : { scale: 0.96 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 36 }}
                   className={`relative px-4 py-2 text-sm rounded-full border transition-colors ${
                     isActive
                       ? "border-transparent text-primary-foreground"
@@ -147,15 +151,20 @@ export function Projects() {
                   {isActive && (
                     <motion.span
                       layoutId="filter-pill"
-                      className="absolute inset-0 rounded-full"
+                      className="absolute inset-0 rounded-full shadow-[var(--shadow-soft)]"
                       style={{ background: "var(--gradient-primary)" }}
-                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                      transition={
+                        reduced
+                          ? { duration: 0 }
+                          : { type: "spring", stiffness: 380, damping: 34, mass: 0.7 }
+                      }
                     />
                   )}
                   <span className="relative inline-flex items-center gap-1.5">
                     {f.label}
                     <motion.span
                       layout
+                      transition={{ type: "spring", stiffness: 500, damping: 36 }}
                       className={`text-[10px] min-w-[1.25rem] text-center px-1.5 py-0.5 rounded-full ${
                         isActive ? "bg-white/25" : "bg-muted text-muted-foreground"
                       }`}
@@ -163,10 +172,10 @@ export function Projects() {
                       <AnimatedCount value={count} />
                     </motion.span>
                   </span>
-                </button>
+                </motion.button>
               );
             })}
-          </div>
+          </motion.div>
 
           <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">

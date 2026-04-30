@@ -178,18 +178,34 @@ export function Projects() {
           </motion.div>
 
           <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filtered.map((p, i) => (
-                <motion.article
-                  key={p.title}
-                  layout
-                  initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -20, scale: 0.96 }}
-                  transition={{ duration: 0.4, delay: i * 0.05, ease: "easeOut" }}
-                  whileHover={{ y: -6 }}
-                  className="group relative rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-shadow overflow-hidden flex flex-col"
-                >
+            <AnimatePresence mode="popLayout" initial={false}>
+              {loading
+                ? Array.from({ length: Math.max(filtered.length, 3) }).map((_, i) => (
+                    <motion.div
+                      key={`skeleton-${i}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2, delay: i * 0.04 }}
+                    >
+                      <ProjectSkeleton />
+                    </motion.div>
+                  ))
+                : filtered.map((p, i) => (
+                    <motion.article
+                      key={p.title}
+                      layout
+                      initial={reduced ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.96 }}
+                      animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+                      exit={reduced ? { opacity: 0 } : { opacity: 0, y: -20, scale: 0.96 }}
+                      transition={{
+                        duration: reduced ? 0.15 : 0.4,
+                        delay: reduced ? 0 : i * 0.05,
+                        ease: "easeOut",
+                      }}
+                      whileHover={reduced ? undefined : { y: -6 }}
+                      className="group relative rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-shadow overflow-hidden flex flex-col"
+                    >
                   <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                     <motion.img
                       src={p.image}

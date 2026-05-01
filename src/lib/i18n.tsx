@@ -14,6 +14,7 @@ const dict: Dict = {
   "nav.contact": { en: "Contact", ar: "تواصل" },
 
   // Hero
+  "hero.name": { en: "Galal Elaasar", ar: "جلال الأعصر" },
   "hero.badge": { en: "Available for new projects", ar: "متاح لمشاريع جديدة" },
   "hero.greeting": { en: "Hi, I'm", ar: "مرحبًا، أنا" },
   "hero.tagline": {

@@ -98,7 +98,7 @@ export function ProjectModal({ project, onClose }: Props) {
                   {project.category === "next"
                     ? "Next.js"
                     : project.category === "native"
-                      ? "React Native"
+                      ? "Native Project"
                       : "React"}
                 </span>
               </div>

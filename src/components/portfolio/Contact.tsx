@@ -5,10 +5,9 @@ import { toast } from "sonner";
 import { useI18n } from "@/lib/i18n";
 
 const socials = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Mail, href: "mailto:hello@galal.dev", label: "Email" },
+  { icon: Github, href: "https://github.com/GalalElaasar9", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/galal-elaasar-2b2449258/?skipRedirect=true", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:galalelaasar552002@gmail.com", label: "Email" },
 ];
 
 export function Contact() {

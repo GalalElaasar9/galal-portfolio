@@ -24,7 +24,7 @@ export function Navbar() {
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#hero" className="font-semibold tracking-tight">
-          <span className="text-gradient">Galal</span>.dev
+          <span className="text-gradient">{t("hero.name")}</span> 
         </a>
         <ul className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {links.map((l) => (

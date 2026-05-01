@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, scale } from "framer-motion";
 import { ArrowRight, Download, Mail } from "lucide-react";
 import avatar from "@/assets/galal-avatar.jpg";
 import { useI18n } from "@/lib/i18n";
@@ -19,7 +19,7 @@ export function Hero() {
             {t("hero.badge")}
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-            {t("hero.greeting")} <span className="text-gradient">Galal Mohamed</span>
+            {t("hero.greeting")} <span className="text-gradient">{t("hero.name")}</span>
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">{t("hero.tagline")}</p>
           <p className="mt-3 text-muted-foreground max-w-lg">{t("hero.sub")}</p>
@@ -45,8 +45,9 @@ export function Hero() {
               {t("hero.cta.contact")}
             </a>
             <a
-              href="/galal-mohamed-cv.pdf"
+              href="https://drive.google.com/file/d/14sgLvbqWxBUhvzdMMXNNuzaazqHqKTaf/view?usp=sharing"
               download
+              target="_blank"
               className="group inline-flex items-center gap-2 px-5 py-3 rounded-full border border-primary/40 bg-primary/5 hover:bg-primary/10 text-primary font-medium transition-colors"
             >
               <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
@@ -74,10 +75,11 @@ export function Hero() {
               <div className="h-full w-full rounded-full overflow-hidden bg-background">
                 <img
                   src={avatar}
-                  alt="Galal Mohamed - Front-End Developer"
+                  alt="Galal Elaasar - Front-End Developer"
                   width={1024}
                   height={1024}
-                  className="h-full w-full object-cover"
+                  // style={{ transform }}
+                  className="h-full w-full object-cover scale-125"
                 />
               </div>
             </div>

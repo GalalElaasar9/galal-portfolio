@@ -2,15 +2,17 @@ import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 
 const skills = [
-  { name: "React", level: 95 },
-  { name: "Next.js", level: 90 },
-  { name: "TypeScript", level: 88 },
-  { name: "Tailwind CSS", level: 95 },
-  { name: "Framer Motion", level: 82 },
-  { name: "Node.js", level: 75 },
+  { name: "HTML5", level: 95 },
+  { name: "CSS3", level: 95 },
+  { name: "Sass", level: 95 },
+  { name: "JavaScript", level: 90 },
+  { name: "TypeScript", level: 85 },
+  { name: "React.js", level: 85 },
+  { name: "Next.js", level: 80 },
+  { name: "Tailwind Css", level: 95 },
 ];
 
-const tools = ["JavaScript", "HTML5", "CSS3", "Git", "Figma", "Vite", "Redux", "REST", "GraphQL"];
+const tools = ["HTML5" , "CSS3" , "Sass" , "JavaScript" , "TypeScript" , "React.js (Hooks, Context API)" , "Redux Toolkit",  "Zustand" , "Data Fetching: Axios, React Query" , "Next Js" , "CMS" , "Tailwind Css", "MUI", "Bootsrap" , "Git", "GitHub"];
 
 export function Skills() {
   const { t } = useI18n();

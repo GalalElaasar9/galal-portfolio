@@ -6,20 +6,29 @@ import { ProjectsEmptyState } from "./ProjectsEmptyState";
 import type { Category, Project } from "./project-types";
 import { ExternalLink, Eye, Github } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import dashboardImg from "@/assets/project-dashboard.jpg";
+import weatherApp from "@/assets/weather-app.png";
+import youtubeClone from "@/assets/youtube-clone.png";
+import prayerTimes from "@/assets/prayer-times.png";
+import travel from "@/assets/travel.jpg";
+import SpecialDesign from "@/assets/Special Design.jpg";
+import food from "@/assets/food website.jpg";
 import commerceImg from "@/assets/project-commerce.jpg";
-import chatImg from "@/assets/project-chat.jpg";
 import portfolioImg from "@/assets/project-portfolio.jpg";
-import fitnessImg from "@/assets/project-fitness.jpg";
+import interior from "@/assets/interior.jpg";
+import social from "@/assets/social.jpg";
+import Elaasar from "@/assets/Elaasar.jpg";
+import photo from "@/assets/photo.jpg";
+import masbaa from "@/assets/masbaa.jpg";
+import education from "@/assets/education.jpg";
 import saasImg from "@/assets/project-saas.jpg";
 import { useI18n } from "@/lib/i18n";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { useDeviceTier } from "@/hooks/use-device-tier";
 
 const projects: Project[] = [
-  {
-    id: "nova",
-    title: "Nova Dashboard",
+    {
+    id: "youtube-clone",
+    title: "Youtube Clone",
     descEn: "Analytics dashboard with real-time charts, dark mode and responsive layouts.",
     descAr: "لوحة تحليلات بمخططات حية، وضع داكن، وتصميم متجاوب.",
     longEn:
@@ -38,100 +47,44 @@ const projects: Project[] = [
       "نظام تصميم متجاوب مع الثيمات",
       "ترتيب العناصر بالسحب والإفلات",
     ],
-    stack: ["React", "TypeScript", "Tailwind", "Recharts", "Vite"],
-    link: "#",
-    repo: "#",
-    cover: dashboardImg,
-    gallery: [dashboardImg, saasImg, portfolioImg],
+    stack: ["React", "MUI", "Vite"],
+    link: "https://youtube55.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/youtube_clone.git",
+    cover: youtubeClone,
+    gallery: [youtubeClone, weatherApp , saasImg, portfolioImg],
+    category: "react",
+  },
+    {
+    id: "weather-app",
+    title: "Weather App",
+    descEn: "Analytics dashboard with real-time charts, dark mode and responsive layouts.",
+    descAr: "لوحة تحليلات بمخططات حية، وضع داكن، وتصميم متجاوب.",
+    longEn:
+      "Nova is an analytics dashboard built for SaaS teams. It features streaming charts, configurable widgets, and a fully theme-aware design system. Optimised for fast first paint and smooth interactivity even on large datasets.",
+    longAr:
+      "نوفا لوحة تحليلات لفِرق SaaS، تتميز بمخططات حيّة، عناصر قابلة للتخصيص، ونظام تصميم متجاوب مع الثيمات. مُحسَّنة لسرعة العرض وسلاسة التفاعل حتى مع البيانات الكبيرة.",
+    highlightsEn: [
+      "Real-time charts with WebSocket streams",
+      "95+ Lighthouse performance score",
+      "Theme-aware design tokens",
+      "Drag-and-drop widget grid",
+    ],
+    highlightsAr: [
+      "مخططات حيّة عبر WebSocket",
+      "نتيجة Lighthouse 95+",
+      "نظام تصميم متجاوب مع الثيمات",
+      "ترتيب العناصر بالسحب والإفلات",
+    ],
+    stack: ["React", "Bootstrap", "Vite"],
+    link: "https://weather-app-9999.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/weather-app.git",
+    cover: weatherApp,
+    gallery: [weatherApp, youtubeClone , saasImg, portfolioImg],
     category: "react",
   },
   {
-    id: "lumen",
-    title: "Lumen Commerce",
-    descEn: "Headless storefront with optimized SSR, cart state and Stripe checkout.",
-    descAr: "متجر إلكتروني بـ SSR مُحسّن، حالة سلة، ودفع عبر Stripe.",
-    longEn:
-      "Lumen is a headless storefront powered by Next.js App Router. It pairs streaming SSR with persistent cart state and a Stripe-powered checkout to deliver a fast, conversion-focused shopping experience.",
-    longAr:
-      "متجر إلكتروني مبني على Next.js App Router، يجمع بين الـ SSR التدريجي وسلة دائمة ودفع عبر Stripe لتجربة تسوق سريعة ومُحسَّنة للتحويل.",
-    highlightsEn: [
-      "Streaming SSR with React Server Components",
-      "Persistent cart synced across devices",
-      "Stripe checkout with Apple/Google Pay",
-      "Lighthouse 98/100 mobile",
-    ],
-    highlightsAr: [
-      "SSR تدريجي مع React Server Components",
-      "سلة دائمة تتزامن بين الأجهزة",
-      "دفع Stripe مع Apple/Google Pay",
-      "Lighthouse 98/100 على الموبايل",
-    ],
-    stack: ["Next.js", "Zustand", "Stripe", "Tailwind"],
-    link: "#",
-    repo: "#",
-    cover: commerceImg,
-    gallery: [commerceImg, saasImg, dashboardImg],
-    category: "next",
-  },
-  {
-    id: "pulse",
-    title: "Pulse Chat",
-    descEn: "Cross-platform mobile chat with optimistic UI, typing indicators and presence.",
-    descAr: "تطبيق محادثات للموبايل مع واجهة تفاعلية ومؤشرات الكتابة.",
-    longEn:
-      "Pulse is a cross-platform chat app built with React Native and Expo. It supports optimistic message sends, typing indicators, presence, and end-to-end encrypted DMs with a smooth, native-feeling animation system.",
-    longAr:
-      "تطبيق محادثات متعدد المنصّات مبني بـ React Native و Expo، يدعم الإرسال التفاؤلي، مؤشرات الكتابة، التواجد، ورسائل خاصة مشفّرة من طرف لطرف بحركات سلسة.",
-    highlightsEn: [
-      "Optimistic UI with offline queue",
-      "Realtime presence & typing indicators",
-      "End-to-end encrypted DMs",
-      "60fps Reanimated transitions",
-    ],
-    highlightsAr: [
-      "واجهة تفاؤلية مع طابور Offline",
-      "تواجد ومؤشرات كتابة فوريّة",
-      "محادثات خاصة مشفّرة E2E",
-      "حركات Reanimated بـ 60fps",
-    ],
-    stack: ["React Native", "Expo", "Socket.io", "Reanimated"],
-    link: "#",
-    repo: "#",
-    cover: chatImg,
-    gallery: [chatImg, fitnessImg],
-    category: "native",
-  },
-  {
-    id: "atlas",
-    title: "Atlas Portfolio",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
-    longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
-    highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
-    ],
-    highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
-    ],
-    stack: ["Next.js", "GSAP", "Tailwind", "MDX"],
-    link: "#",
-    repo: "#",
-    cover: portfolioImg,
-    gallery: [portfolioImg, saasImg, dashboardImg],
-    category: "next",
-  },
-  {
-    id: "fittrack",
-    title: "FitTrack Mobile",
+    id: "prayer-times",
+    title: "Prayer Times",
     descEn: "Workout tracker with offline-first sync, charts, and haptic feedback.",
     descAr: "متتبّع تمارين يعمل دون اتصال، مع مخططات وردود حسّية.",
     longEn:
@@ -150,40 +103,264 @@ const projects: Project[] = [
       "رسوم تقدّم متحركة",
       "ردود حسّية وصوتية",
     ],
-    stack: ["React Native", "Reanimated", "SQLite", "Expo"],
-    link: "#",
-    repo: "#",
-    cover: fitnessImg,
-    gallery: [fitnessImg, chatImg],
+    stack: ["React", "Bootstrap", "Vite"],
+    link: "https://prayer-times99.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/prayer-times.git",
+    cover: prayerTimes,
+    gallery: [prayerTimes , youtubeClone, weatherApp , saasImg, portfolioImg],
+    category: "react",
+  },
+  {
+    id: "social-Media",
+    title: "Social Media Website",
+    descEn: "Animated portfolio template with smooth scroll and theme system.",
+    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
+    longEn:
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+    longAr:
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+    highlightsEn: [
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
+    ],
+    highlightsAr: [
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+    ],
+    stack: ["Html", "css", "Js", "fontawesome"],
+    link: "https://galalelaasar9.github.io/Social-Media-Elaasar/",
+    repo: "https://github.com/GalalElaasar9/Social-Media-Elaasar.git",
+    cover: social,
+    gallery: [ social , education , interior , food , SpecialDesign, travel],
     category: "native",
   },
   {
-    id: "stack-saas",
-    title: "Stack SaaS",
-    descEn: "Marketing site with MDX blog, dynamic OG images and edge rendering.",
-    descAr: "موقع تسويقي بمدونة MDX، صور OG ديناميكية، وعرض على الـ Edge.",
+    id: "eduction-Media",
+    title: "Social Media Website",
+    descEn: "Animated portfolio template with smooth scroll and theme system.",
+    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
     longEn:
-      "Stack SaaS is a marketing site that pairs an MDX-powered blog with dynamic OG image generation and edge rendering for instant page loads worldwide.",
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
     longAr:
-      "موقع تسويقي يجمع مدوّنة MDX بصور OG ديناميكية وعرض على الـ Edge لتحميل فوري حول العالم.",
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
     highlightsEn: [
-      "MDX blog with custom components",
-      "Dynamic Open Graph image API",
-      "Edge-rendered with global CDN",
-      "Subtle Framer Motion choreography",
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
     ],
     highlightsAr: [
-      "مدوّنة MDX بمكوّنات مخصصة",
-      "API ديناميكي لصور Open Graph",
-      "عرض على الـ Edge مع CDN عالمي",
-      "حركات Framer Motion هادئة",
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
     ],
-    stack: ["React", "Vite", "Framer Motion", "MDX"],
-    link: "#",
-    repo: "#",
-    cover: saasImg,
-    gallery: [saasImg, portfolioImg, dashboardImg],
-    category: "react",
+    stack: ["Html", "css", "Js", "fontawesome"],
+    link: "https://education-website-0100.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/Education-website.git",
+    cover: education,
+    gallery: [ education , social , interior , food , SpecialDesign, travel],
+    category: "native",
+  },
+  {
+    id: "Tarvel",
+    title: "Tarvel Website",
+    descEn: "Cross-platform mobile chat with optimistic UI, typing indicators and presence.",
+    descAr: "تطبيق محادثات للموبايل مع واجهة تفاعلية ومؤشرات الكتابة.",
+    longEn:
+      "Pulse is a cross-platform chat app built with React Native and Expo. It supports optimistic message sends, typing indicators, presence, and end-to-end encrypted DMs with a smooth, native-feeling animation system.",
+    longAr:
+      "تطبيق محادثات متعدد المنصّات مبني بـ React Native و Expo، يدعم الإرسال التفاؤلي، مؤشرات الكتابة، التواجد، ورسائل خاصة مشفّرة من طرف لطرف بحركات سلسة.",
+    highlightsEn: [
+      "Optimistic UI with offline queue",
+      "Realtime presence & typing indicators",
+      "End-to-end encrypted DMs",
+      "60fps Reanimated transitions",
+    ],
+    highlightsAr: [
+      "واجهة تفاؤلية مع طابور Offline",
+      "تواجد ومؤشرات كتابة فوريّة",
+      "محادثات خاصة مشفّرة E2E",
+      "حركات Reanimated بـ 60fps",
+    ],
+    stack: ["Html", "css", "Js", "fontawesome"],
+    link: "https://traveling-website-9999.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/travel.git",
+    cover: travel,
+    gallery: [travel, SpecialDesign , food],
+    category: "native",
+  },
+  {
+    id: "special",
+    title: "Special Website",
+    descEn: "Animated portfolio template with smooth scroll and theme system.",
+    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
+    longEn:
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+    longAr:
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+    highlightsEn: [
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
+    ],
+    highlightsAr: [
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+    ],
+    stack: ["Html", "css", "Js", "fontawesome"],
+    link: "https://special999.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/Special-Design.git",
+    cover: SpecialDesign,
+    gallery: [SpecialDesign, travel , food],
+    category: "native",
+  },
+  {
+    id: "food-website",
+    title: "Food Website",
+    descEn: "Animated portfolio template with smooth scroll and theme system.",
+    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
+    longEn:
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+    longAr:
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+    highlightsEn: [
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
+    ],
+    highlightsAr: [
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+    ],
+    stack: ["Html", "css", "Js", "fontawesome"],
+    link: "https://food-website999.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/Food-Website99.git",
+    cover: food,
+    gallery: [food , SpecialDesign, travel],
+    category: "native",
+  },
+  {
+    id: "interior-elaasar",
+    title: "Interior Elaasar",
+    descEn: "Animated portfolio template with smooth scroll and theme system.",
+    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
+    longEn:
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+    longAr:
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+    highlightsEn: [
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
+    ],
+    highlightsAr: [
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+    ],
+    stack: ["Html", "css", "Js", "fontawesome"],
+    link: "https://interior-elaasar-000.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/Interior-Project.git",
+    cover: interior,
+    gallery: [ interior , food , SpecialDesign, travel],
+    category: "native",
+  },
+  {
+    id: "elaasar-website",
+    title: "Elaasar Website",
+    descEn: "Animated portfolio template with smooth scroll and theme system.",
+    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
+    longEn:
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+    longAr:
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+    highlightsEn: [
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
+    ],
+    highlightsAr: [
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+    ],
+    stack: ["Html", "css", "Sass" , "Js", "fontawesome"],
+    link: "https://galalelaasar9.github.io/Social-Media-Elaasar/",
+    repo: "https://github.com/GalalElaasar9/Social-Media-Elaasar.git",
+    cover: Elaasar,
+    gallery: [ Elaasar , social , interior , food , SpecialDesign, travel],
+    category: "native",
+  },
+  {
+    id: "photography-website",
+    title: "Photography Website",
+    descEn: "Animated portfolio template with smooth scroll and theme system.",
+    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
+    longEn:
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+    longAr:
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+    highlightsEn: [
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
+    ],
+    highlightsAr: [
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+    ],
+    stack: ["Html", "css", "Sass" ,"Js", "fontawesome"],
+    link: "https://photography-website-elaasar.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/Photography-Portfolio-Website.git",
+    cover: photo,
+    gallery: [photo , Elaasar , social , interior , food , SpecialDesign, travel],
+    category: "native",
+  },
+  {
+    id: "masbaa-website",
+    title: "masbaha Website",
+    descEn: "Animated portfolio template with smooth scroll and theme system.",
+    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
+    longEn:
+      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+    longAr:
+      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+    highlightsEn: [
+      "GSAP-powered scroll storytelling",
+      "Light, dark & custom accent themes",
+      "MDX-driven case study pages",
+      "Edge-rendered for sub-50ms TTFB",
+    ],
+    highlightsAr: [
+      "سرد عبر التمرير مدعوم بـ GSAP",
+      "ثيمات فاتحة وداكنة وأكسنت مخصص",
+      "صفحات دراسات حالة بـ MDX",
+      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+    ],
+    stack: ["Html", "css", "Js", "fontawesome"],
+    link: "https://website-misbaha-zekr.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/Website-Misbaha.git",
+    cover: masbaa,
+    gallery: [ masbaa , photo , Elaasar , social , interior , food , SpecialDesign, travel],
+    category: "native",
   },
 ];
 
@@ -199,7 +376,7 @@ export function Projects() {
     { value: "all", label: t("projects.filter.all") },
     { value: "react", label: "React" },
     { value: "next", label: "Next.js" },
-    { value: "native", label: "React Native" },
+    { value: "native", label: "Native Project" },
   ];
 
   const filtered = useMemo(
@@ -352,7 +529,7 @@ export function Projects() {
                         {p.category === "next"
                           ? "Next.js"
                           : p.category === "native"
-                            ? "React Native"
+                            ? "Native Project"
                             : "React"}
                       </span>
                       {/* Quick view affordance */}
@@ -376,7 +553,7 @@ export function Projects() {
                           {lang === "ar" ? p.descAr : p.descEn}
                         </p>
                         <div className="mt-4 flex flex-wrap gap-1.5">
-                          {p.stack.slice(0, 4).map((s) => (
+                          {p.stack.map((s) => (
                             <span
                               key={s}
                               className="text-xs px-2 py-0.5 rounded-full bg-accent text-accent-foreground"

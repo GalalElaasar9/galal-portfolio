@@ -12,14 +12,12 @@ import prayerTimes from "@/assets/prayer-times.png";
 import travel from "@/assets/travel.jpg";
 import SpecialDesign from "@/assets/Special Design.jpg";
 import food from "@/assets/food website.jpg";
-import portfolioImg from "@/assets/project-portfolio.jpg";
 import interior from "@/assets/interior.jpg";
 import social from "@/assets/social.jpg";
 import Elaasar from "@/assets/Elaasar.jpg";
 import photo from "@/assets/photo.jpg";
 import masbaa from "@/assets/masbaa.jpg";
 import education from "@/assets/education.jpg";
-import saasImg from "@/assets/project-saas.jpg";
 import { useI18n } from "@/lib/i18n";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { useDeviceTier } from "@/hooks/use-device-tier";
@@ -94,7 +92,7 @@ const projects: Project[] = [
     repo: "https://github.com/GalalElaasar9/weather-app.git",
     
     cover: weatherApp,
-    gallery: [weatherApp, youtubeClone, saasImg, portfolioImg],
+    gallery: [weatherApp, youtubeClone, prayerTimes],
     
     category: "react",
   },
@@ -131,7 +129,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/prayer-times.git",
   
   cover: prayerTimes,
-  gallery: [prayerTimes, youtubeClone, weatherApp, saasImg, portfolioImg],
+  gallery: [prayerTimes, youtubeClone, weatherApp],
   
   category: "react",
   },

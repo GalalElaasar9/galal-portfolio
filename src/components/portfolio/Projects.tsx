@@ -26,341 +26,448 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { useDeviceTier } from "@/hooks/use-device-tier";
 
 const projects: Project[] = [
-    {
+  {
     id: "youtube-clone",
     title: "Youtube Clone",
-    descEn: "Analytics dashboard with real-time charts, dark mode and responsive layouts.",
-    descAr: "لوحة تحليلات بمخططات حية، وضع داكن، وتصميم متجاوب.",
+    descEn: "A YouTube-inspired video platform with browsing, search, and responsive UI.",
+    descAr: "منصة فيديوهات مستوحاة من يوتيوب مع التصفح، البحث، وتصميم متجاوب.",
+    
     longEn:
-      "Nova is an analytics dashboard built for SaaS teams. It features streaming charts, configurable widgets, and a fully theme-aware design system. Optimised for fast first paint and smooth interactivity even on large datasets.",
+      "A fully responsive YouTube clone that allows users to browse trending videos, search for content, and watch videos in a clean and modern interface. The app focuses on smooth user experience, fast loading, and intuitive navigation similar to the real YouTube platform.",
+    
     longAr:
-      "نوفا لوحة تحليلات لفِرق SaaS، تتميز بمخططات حيّة، عناصر قابلة للتخصيص، ونظام تصميم متجاوب مع الثيمات. مُحسَّنة لسرعة العرض وسلاسة التفاعل حتى مع البيانات الكبيرة.",
+      "تطبيق يحاكي منصة يوتيوب بشكل كامل، يتيح للمستخدمين تصفح الفيديوهات الشائعة، البحث عن المحتوى، ومشاهدة الفيديوهات في واجهة حديثة وسهلة الاستخدام. يركز التطبيق على سرعة الأداء وتجربة مستخدم سلسة مشابهة ليوتيوب الحقيقي.",
+    
     highlightsEn: [
-      "Real-time charts with WebSocket streams",
-      "95+ Lighthouse performance score",
-      "Theme-aware design tokens",
-      "Drag-and-drop widget grid",
+      "Video browsing and category filtering",
+      "Search functionality for videos",
+      "Responsive layout for all devices",
+      "Clean and modern UI مشابه ليوتيوب",
     ],
+    
     highlightsAr: [
-      "مخططات حيّة عبر WebSocket",
-      "نتيجة Lighthouse 95+",
-      "نظام تصميم متجاوب مع الثيمات",
-      "ترتيب العناصر بالسحب والإفلات",
+      "تصفح الفيديوهات وتصنيفها",
+      "إمكانية البحث عن الفيديوهات",
+      "تصميم متجاوب لكل الأجهزة",
+      "واجهة حديثة مشابهة ليوتيوب",
     ],
+    
     stack: ["React", "MUI", "Vite"],
+    
     link: "https://youtube55.netlify.app/",
     repo: "https://github.com/GalalElaasar9/youtube_clone.git",
+    
     cover: youtubeClone,
-    gallery: [youtubeClone, weatherApp , saasImg, portfolioImg],
-    category: "react",
-  },
-    {
-    id: "weather-app",
-    title: "Weather App",
-    descEn: "Analytics dashboard with real-time charts, dark mode and responsive layouts.",
-    descAr: "لوحة تحليلات بمخططات حية، وضع داكن، وتصميم متجاوب.",
-    longEn:
-      "Nova is an analytics dashboard built for SaaS teams. It features streaming charts, configurable widgets, and a fully theme-aware design system. Optimised for fast first paint and smooth interactivity even on large datasets.",
-    longAr:
-      "نوفا لوحة تحليلات لفِرق SaaS، تتميز بمخططات حيّة، عناصر قابلة للتخصيص، ونظام تصميم متجاوب مع الثيمات. مُحسَّنة لسرعة العرض وسلاسة التفاعل حتى مع البيانات الكبيرة.",
-    highlightsEn: [
-      "Real-time charts with WebSocket streams",
-      "95+ Lighthouse performance score",
-      "Theme-aware design tokens",
-      "Drag-and-drop widget grid",
-    ],
-    highlightsAr: [
-      "مخططات حيّة عبر WebSocket",
-      "نتيجة Lighthouse 95+",
-      "نظام تصميم متجاوب مع الثيمات",
-      "ترتيب العناصر بالسحب والإفلات",
-    ],
-    stack: ["React", "Bootstrap", "Vite"],
-    link: "https://weather-app-9999.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/weather-app.git",
-    cover: weatherApp,
-    gallery: [weatherApp, youtubeClone , saasImg, portfolioImg],
+    gallery: [youtubeClone, weatherApp, saasImg, portfolioImg],
+    
     category: "react",
   },
   {
-    id: "prayer-times",
-    title: "Prayer Times",
-    descEn: "Workout tracker with offline-first sync, charts, and haptic feedback.",
-    descAr: "متتبّع تمارين يعمل دون اتصال، مع مخططات وردود حسّية.",
+    id: "weather-app",
+    title: "Weather App",
+    
+    descEn: "A weather forecasting app with real-time data, search, and responsive design.",
+    descAr: "تطبيق لعرض حالة الطقس ببيانات مباشرة مع البحث وتصميم متجاوب.",
+    
     longEn:
-      "FitTrack is an offline-first workout tracker. Sessions log locally and sync seamlessly when online, with detailed progress charts, haptic feedback, and adaptive workout suggestions.",
+      "A responsive weather application that allows users to check current weather conditions and forecasts for different cities. It provides real-time data such as temperature, humidity, and wind speed with a clean and user-friendly interface. The app focuses on simplicity, speed, and a smooth user experience across all devices.",
+    
     longAr:
-      "متتبّع تمارين يعمل دون اتصال أولاً، يسجّل الجلسات محليًا ويتزامن لحظة الاتصال، مع رسوم تقدّم تفصيلية، ردود حسّية، واقتراحات تمارين تكيّفية.",
+      "تطبيق لعرض حالة الطقس يتيح للمستخدم معرفة الطقس الحالي والتوقعات لمدن مختلفة. يعرض بيانات مباشرة مثل درجة الحرارة، الرطوبة، وسرعة الرياح في واجهة بسيطة وسهلة الاستخدام. يركز التطبيق على السرعة وسهولة الاستخدام على جميع الأجهزة.",
+    
     highlightsEn: [
-      "Offline-first with SQLite sync",
-      "Adaptive workout suggestions",
-      "Animated progress charts",
-      "Haptic & audio feedback",
+      "Real-time weather data fetching",
+      "Search by city name",
+      "Responsive design for all devices",
+      "Clean and intuitive UI",
     ],
+    
     highlightsAr: [
-      "Offline-first مع مزامنة SQLite",
-      "اقتراحات تمارين تكيّفية",
-      "رسوم تقدّم متحركة",
-      "ردود حسّية وصوتية",
+      "جلب بيانات الطقس بشكل مباشر",
+      "البحث عن المدن بسهولة",
+      "تصميم متجاوب لكل الأجهزة",
+      "واجهة بسيطة وسهلة الاستخدام",
     ],
+    
     stack: ["React", "Bootstrap", "Vite"],
-    link: "https://prayer-times99.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/prayer-times.git",
-    cover: prayerTimes,
-    gallery: [prayerTimes , youtubeClone, weatherApp , saasImg, portfolioImg],
+    
+    link: "https://weather-app-9999.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/weather-app.git",
+    
+    cover: weatherApp,
+    gallery: [weatherApp, youtubeClone, saasImg, portfolioImg],
+    
     category: "react",
+  },
+  {
+  id: "prayer-times",
+  title: "Prayer Times",
+  
+  descEn: "An Islamic app to display daily prayer times based on location with a clean UI.",
+  descAr: "تطبيق إسلامي لعرض مواعيد الصلاة اليومية حسب الموقع بتصميم بسيط.",
+  
+  longEn:
+    "A responsive prayer times application that helps users stay updated with accurate daily الصلاة times based on their location. The app provides a clean and intuitive interface to view today's prayers, upcoming prayer times, and current time status. It focuses on simplicity, clarity, and accessibility across all devices.",
+  
+  longAr:
+    "تطبيق لعرض مواعيد الصلاة يساعد المستخدمين على معرفة أوقات الصلاة اليومية بدقة بناءً على موقعهم. يوفر واجهة بسيطة وسهلة لعرض صلوات اليوم، الصلاة القادمة، والوقت الحالي. يركز التطبيق على الوضوح وسهولة الاستخدام على جميع الأجهزة.",
+  
+  highlightsEn: [
+    "Accurate prayer times based on location",
+    "Display of today's prayers schedule",
+    "Responsive design for all devices",
+    "Simple and clean user interface",
+  ],
+  
+  highlightsAr: [
+    "عرض مواعيد الصلاة بدقة حسب الموقع",
+    "عرض جدول صلوات اليوم بالكامل",
+    "تصميم متجاوب لكل الأجهزة",
+    "واجهة بسيطة وسهلة الاستخدام",
+  ],
+  
+  stack: ["React", "Bootstrap", "Vite"],
+  
+  link: "https://prayer-times99.netlify.app/",
+  repo: "https://github.com/GalalElaasar9/prayer-times.git",
+  
+  cover: prayerTimes,
+  gallery: [prayerTimes, youtubeClone, weatherApp, saasImg, portfolioImg],
+  
+  category: "react",
   },
   {
     id: "social-Media",
     title: "Social Media Website",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
+    
+    descEn: "A social media UI website with posts, interactions, and responsive design.",
+    descAr: "موقع سوشيال ميديا يعرض منشورات وتفاعلات بتصميم متجاوب.",
+    
     longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
+      "A social media website interface that allows users to explore posts, interact with content, and experience a modern feed layout. The project focuses on building a clean UI similar to popular social platforms, with responsive design and smooth user experience using pure HTML, CSS, and JavaScript.",
+    
     longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
+      "واجهة موقع سوشيال ميديا تتيح للمستخدمين تصفح المنشورات والتفاعل معها في تصميم يشبه المنصات الحديثة. يركز المشروع على بناء واجهة نظيفة وتجربة مستخدم سلسة باستخدام HTML و CSS و JavaScript فقط.",
+    
     highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
+      "Modern social media feed layout",
+      "Interactive UI elements (likes, comments, etc.)",
+      "Responsive design for all screen sizes",
+      "Built using pure HTML, CSS, and JavaScript",
     ],
+    
     highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
+      "تصميم حديث لواجهة السوشيال ميديا",
+      "عناصر تفاعلية (إعجاب، تعليقات، إلخ)",
+      "تصميم متجاوب لكل أحجام الشاشات",
+      "مبني باستخدام HTML و CSS و JavaScript فقط",
     ],
-    stack: ["Html", "css", "Js", "fontawesome"],
+    
+    stack: ["Html", "CSS", "JavaScript", "Font Awesome"],
+    
     link: "https://galalelaasar9.github.io/Social-Media-Elaasar/",
     repo: "https://github.com/GalalElaasar9/Social-Media-Elaasar.git",
+    
     cover: social,
-    gallery: [ social , education , interior , food , SpecialDesign, travel],
+    gallery: [social, education, interior, food, SpecialDesign, travel],
+    
     category: "native",
   },
   {
-    id: "eduction-Media",
-    title: "Social Media Website",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
-    longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
-    highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
-    ],
-    highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
-    ],
-    stack: ["Html", "css", "Js", "fontawesome"],
-    link: "https://education-website-0100.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/Education-website.git",
-    cover: education,
-    gallery: [ education , social , interior , food , SpecialDesign, travel],
-    category: "native",
+  id: "eduction-Media",
+  title: "Education Website",
+  
+  descEn: "An education website for courses, instructors, and learning content.",
+  descAr: "موقع تعليمي لعرض الكورسات والمدرسين والمحتوى التعليمي.",
+  
+  longEn:
+    "An education website designed to showcase courses, instructors, and learning programs in a clean and organized layout. The project focuses on presenting educational content بطريقة سهلة وجذابة مع تجربة مستخدم سلسة، باستخدام HTML و CSS و JavaScript لبناء واجهة احترافية ومتجاوبة.",
+  
+  longAr:
+    "موقع تعليمي مصمم لعرض الكورسات والمدرسين والبرامج التعليمية بشكل منظم وجذاب. يركز المشروع على تقديم المحتوى التعليمي بطريقة سهلة مع تجربة مستخدم مريحة باستخدام HTML و CSS و JavaScript.",
+  
+  highlightsEn: [
+    "Courses and instructors showcase",
+    "Clean and structured layout",
+    "Responsive design for all devices",
+    "Smooth navigation between sections",
+  ],
+  
+  highlightsAr: [
+    "عرض الكورسات والمدرسين",
+    "تصميم منظم وسهل الاستخدام",
+    "تصميم متجاوب لكل الأجهزة",
+    "تنقل سلس بين أقسام الموقع",
+  ],
+  
+  stack: ["HTML", "CSS", "JavaScript", "Font Awesome"],
+  
+  link: "https://education-website-0100.netlify.app/",
+  repo: "https://github.com/GalalElaasar9/Education-website.git",
+  
+  cover: education,
+  gallery: [education, social, interior, food, SpecialDesign, travel],
+  
+  category: "native",
   },
   {
-    id: "Tarvel",
-    title: "Tarvel Website",
-    descEn: "Cross-platform mobile chat with optimistic UI, typing indicators and presence.",
-    descAr: "تطبيق محادثات للموبايل مع واجهة تفاعلية ومؤشرات الكتابة.",
-    longEn:
-      "Pulse is a cross-platform chat app built with React Native and Expo. It supports optimistic message sends, typing indicators, presence, and end-to-end encrypted DMs with a smooth, native-feeling animation system.",
-    longAr:
-      "تطبيق محادثات متعدد المنصّات مبني بـ React Native و Expo، يدعم الإرسال التفاؤلي، مؤشرات الكتابة، التواجد، ورسائل خاصة مشفّرة من طرف لطرف بحركات سلسة.",
-    highlightsEn: [
-      "Optimistic UI with offline queue",
-      "Realtime presence & typing indicators",
-      "End-to-end encrypted DMs",
-      "60fps Reanimated transitions",
-    ],
-    highlightsAr: [
-      "واجهة تفاؤلية مع طابور Offline",
-      "تواجد ومؤشرات كتابة فوريّة",
-      "محادثات خاصة مشفّرة E2E",
-      "حركات Reanimated بـ 60fps",
-    ],
-    stack: ["Html", "css", "Js", "fontawesome"],
-    link: "https://traveling-website-9999.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/travel.git",
-    cover: travel,
-    gallery: [travel, SpecialDesign , food],
-    category: "native",
+  id: "Tarvel",
+  title: "Travel Website",
+  
+  descEn: "A travel website to explore destinations, offers, and booking sections.",
+  descAr: "موقع سفر لعرض الوجهات والعروض وأقسام الحجز بتصميم جذاب.",
+  
+  longEn:
+    "A travel website designed to showcase popular destinations, travel offers, and tour packages in an engaging and visually appealing layout. The project focuses on creating an attractive UI with smooth navigation, helping users explore places and plan trips بسهولة باستخدام HTML و CSS و JavaScript.",
+  
+  longAr:
+    "موقع سفر مصمم لعرض الوجهات السياحية والعروض وباقات الرحلات بشكل جذاب. يركز المشروع على تقديم تجربة مستخدم سهلة مع تصميم بصري مميز وتنقل سلس باستخدام HTML و CSS و JavaScript.",
+  
+  highlightsEn: [
+    "Showcase of travel destinations and offers",
+    "Attractive and modern UI design",
+    "Responsive layout for all devices",
+    "Smooth scrolling and section navigation",
+  ],
+  
+  highlightsAr: [
+    "عرض الوجهات السياحية والعروض",
+    "تصميم حديث وجذاب",
+    "تصميم متجاوب لكل الأجهزة",
+    "تنقل سلس بين أقسام الموقع",
+  ],
+  
+  stack: ["HTML", "CSS", "JavaScript", "Font Awesome"],
+  
+  link: "https://traveling-website-9999.netlify.app/",
+  repo: "https://github.com/GalalElaasar9/travel.git",
+  
+  cover: travel,
+  gallery: [travel, SpecialDesign, food],
+  
+  category: "native",
   },
   {
-    id: "special",
-    title: "Special Website",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
-    longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
-    highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
-    ],
-    highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
-    ],
-    stack: ["Html", "css", "Js", "fontawesome"],
-    link: "https://special999.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/Special-Design.git",
-    cover: SpecialDesign,
-    gallery: [SpecialDesign, travel , food],
-    category: "native",
+  id: "special",
+  title: "Special Design Website",
+  
+  descEn: "A modern business website with clean layout and responsive design.",
+  descAr: "موقع بزنس بتصميم حديث ومنظم مع تجربة متجاوبة.",
+  
+  longEn:
+    "A modern business website designed to present services and content in a clean and professional layout. The project focuses on delivering a visually appealing design with smooth navigation and well-structured sections, built using HTML, CSS, and JavaScript for a fast and responsive user experience.",
+  
+  longAr:
+    "موقع بزنس مصمم لعرض الخدمات والمحتوى بشكل احترافي ومنظم. يركز المشروع على تقديم تصميم جذاب مع تنقل سلس بين الأقسام، باستخدام HTML و CSS و JavaScript لضمان سرعة الأداء وتجربة مستخدم مريحة.",
+  
+  highlightsEn: [
+    "Clean and modern business layout",
+    "Well-structured sections for content",
+    "Responsive design for all devices",
+    "Smooth navigation and user experience",
+  ],
+  
+  highlightsAr: [
+    "تصميم حديث ومنظم للمواقع التجارية",
+    "تقسيم واضح ومنسق للمحتوى",
+    "تصميم متجاوب لكل الأجهزة",
+    "تنقل سلس وتجربة مستخدم مريحة",
+  ],
+  
+  stack: ["HTML", "CSS", "JavaScript", "Font Awesome"],
+  
+  link: "https://special999.netlify.app/",
+  repo: "https://github.com/GalalElaasar9/Special-Design.git",
+  
+  cover: SpecialDesign,
+  gallery: [SpecialDesign, travel, food],
+  
+  category: "native",
   },
   {
-    id: "food-website",
-    title: "Food Website",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
-    longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
-    highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
-    ],
-    highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
-    ],
-    stack: ["Html", "css", "Js", "fontawesome"],
-    link: "https://food-website999.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/Food-Website99.git",
-    cover: food,
-    gallery: [food , SpecialDesign, travel],
-    category: "native",
+  id: "food-website",
+  title: "Food Website",
+  
+  descEn: "A restaurant website to showcase menu, dishes, and food services.",
+  descAr: "موقع مطعم لعرض المنيو والأكلات والخدمات بشكل جذاب.",
+  
+  longEn:
+    "A modern restaurant website designed to showcase food items, menu sections, and services in an attractive and user-friendly layout. The project focuses on visual appeal with organized content, helping users explore dishes easily with a smooth browsing experience using HTML, CSS, and JavaScript.",
+  
+  longAr:
+    "موقع مطعم حديث مصمم لعرض الأكلات وأقسام المنيو والخدمات بشكل جذاب وسهل الاستخدام. يركز المشروع على الشكل البصري وتنظيم المحتوى لتسهيل تصفح المستخدم للأكلات مع تجربة سلسة باستخدام HTML و CSS و JavaScript.",
+  
+  highlightsEn: [
+    "Food menu and dishes showcase",
+    "Attractive and modern UI design",
+    "Responsive layout for all devices",
+    "Smooth navigation between sections",
+  ],
+  
+  highlightsAr: [
+    "عرض المنيو والأكلات بشكل منظم",
+    "تصميم حديث وجذاب",
+    "تصميم متجاوب لكل الأجهزة",
+    "تنقل سلس بين أقسام الموقع",
+  ],
+  
+  stack: ["HTML", "CSS", "JavaScript", "Font Awesome"],
+  
+  link: "https://food-website999.netlify.app/",
+  repo: "https://github.com/GalalElaasar9/Food-Website99.git",
+  
+  cover: food,
+  gallery: [food, SpecialDesign, travel],
+  
+  category: "native",
   },
   {
-    id: "interior-elaasar",
-    title: "Interior Elaasar",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
-    longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
-    highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
-    ],
-    highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
-    ],
-    stack: ["Html", "css", "Js", "fontawesome"],
-    link: "https://interior-elaasar-000.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/Interior-Project.git",
-    cover: interior,
-    gallery: [ interior , food , SpecialDesign, travel],
-    category: "native",
+  id: "interior-elaasar",
+  title: "Interior Design Website",
+  
+  descEn: "A modern interior design website showcasing home decoration and design ideas.",
+  descAr: "موقع تصميم داخلي لعرض ديكورات المنازل وأفكار التصميم بشكل عصري.",
+  
+  longEn:
+    "A modern interior design website built to showcase home decoration ideas, furniture layouts, and interior styling concepts. The project focuses on presenting visual content in an elegant and structured way, allowing users to explore different design styles with a smooth and responsive interface using HTML, CSS, and JavaScript.",
+  
+  longAr:
+    "موقع تصميم داخلي حديث يعرض أفكار ديكور المنازل وتنسيق الأثاث وأنماط التصميم الداخلي. يركز المشروع على عرض المحتوى بشكل بصري أنيق ومنظم مع تجربة استخدام سلسة ومتجاوبة باستخدام HTML و CSS و JavaScript.",
+  
+  highlightsEn: [
+    "Showcase of interior design ideas and layouts",
+    "Modern and elegant UI design",
+    "Responsive layout for all devices",
+    "Smooth navigation between sections",
+  ],
+  
+  highlightsAr: [
+    "عرض أفكار التصميم الداخلي والديكورات",
+    "تصميم أنيق وحديث",
+    "تصميم متجاوب لكل الأجهزة",
+    "تنقل سلس بين الأقسام",
+  ],
+  
+  stack: ["HTML", "CSS", "JavaScript", "Font Awesome"],
+  
+  link: "https://interior-elaasar-000.netlify.app/",
+  repo: "https://github.com/GalalElaasar9/Interior-Project.git",
+  
+  cover: interior,
+  gallery: [interior, food, SpecialDesign, travel],
+  
+  category: "native",
   },
   {
-    id: "elaasar-website",
-    title: "Elaasar Website",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
-    longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
-    highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
-    ],
-    highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
-    ],
-    stack: ["Html", "css", "Sass" , "Js", "fontawesome"],
-    link: "https://galalelaasar9.github.io/Social-Media-Elaasar/",
-    repo: "https://github.com/GalalElaasar9/Social-Media-Elaasar.git",
-    cover: Elaasar,
-    gallery: [ Elaasar , social , interior , food , SpecialDesign, travel],
-    category: "native",
+  id: "elaasar-website",
+  title: "Elaasar Website",
+  
+  descEn: "A personal portfolio website showcasing projects, skills, and work experience.",
+  descAr: "موقع بورتفوليو شخصي لعرض المشاريع والمهارات والخبرة العملية.",
+  
+  longEn:
+    "A personal portfolio website designed to showcase projects, skills, and development work in a clean and professional layout. The project focuses on presenting information in an organized way with smooth navigation and responsive design, built using HTML, CSS, Sass, and JavaScript.",
+  
+  longAr:
+    "موقع بورتفوليو شخصي مصمم لعرض المشاريع والمهارات والخبرة بشكل منظم واحترافي. يركز المشروع على تقديم المحتوى بطريقة واضحة مع تنقل سلس وتصميم متجاوب باستخدام HTML و CSS و Sass و JavaScript.",
+  
+  highlightsEn: [
+    "Personal portfolio showcase",
+    "Clean and professional layout",
+    "Responsive design for all devices",
+    "Organized sections for projects and skills",
+  ],
+  
+  highlightsAr: [
+    "عرض بورتفوليو شخصي",
+    "تصميم نظيف واحترافي",
+    "تصميم متجاوب لكل الأجهزة",
+    "تنظيم واضح للمشاريع والمهارات",
+  ],
+  
+  stack: ["HTML", "CSS", "Sass", "JavaScript", "Font Awesome"],
+  
+  link: "https://galalelaasar9.github.io/Social-Media-Elaasar/",
+  repo: "https://github.com/GalalElaasar9/Social-Media-Elaasar.git",
+  
+  cover: Elaasar,
+  gallery: [Elaasar, social, interior, food, SpecialDesign, travel],
+  
+  category: "native",
   },
   {
-    id: "photography-website",
-    title: "Photography Website",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
-    longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
-    highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
-    ],
-    highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
-    ],
-    stack: ["Html", "css", "Sass" ,"Js", "fontawesome"],
-    link: "https://photography-website-elaasar.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/Photography-Portfolio-Website.git",
-    cover: photo,
-    gallery: [photo , Elaasar , social , interior , food , SpecialDesign, travel],
-    category: "native",
+  id: "photography-website",
+  title: "Photography Portfolio Website",
+  
+  descEn: "A photography portfolio website to showcase creative photos and visual work.",
+  descAr: "موقع بورتفوليو للتصوير لعرض الصور والأعمال البصرية بشكل احترافي.",
+  
+  longEn:
+    "A modern photography portfolio website designed to showcase visual work, photography projects, and creative shots in an elegant gallery layout. The project focuses on presenting images in a clean, minimal, and visually appealing way with smooth navigation and responsive design using HTML, CSS, Sass, and JavaScript.",
+  
+  longAr:
+    "موقع بورتفوليو للتصوير يعرض الأعمال الفوتوغرافية والصور الإبداعية في معرض أنيق. يركز المشروع على عرض الصور بطريقة بسيطة وجذابة مع تجربة استخدام سلسة وتصميم متجاوب باستخدام HTML و CSS و Sass و JavaScript.",
+  
+  highlightsEn: [
+    "Elegant photo gallery layout",
+    "Showcase of photography projects",
+    "Responsive design for all devices",
+    "Smooth navigation and image browsing",
+  ],
+  
+  highlightsAr: [
+    "معرض صور أنيق وجذاب",
+    "عرض أعمال التصوير الفوتوغرافي",
+    "تصميم متجاوب لكل الأجهزة",
+    "تنقل سلس بين الصور",
+  ],
+  
+  stack: ["HTML", "CSS", "Sass", "JavaScript", "Font Awesome"],
+  
+  link: "https://photography-website-elaasar.netlify.app/",
+  repo: "https://github.com/GalalElaasar9/Photography-Portfolio-Website.git",
+  
+  cover: photo,
+  gallery: [photo, Elaasar, social, interior, food, SpecialDesign, travel],
+  
+  category: "native",
   },
   {
-    id: "masbaa-website",
-    title: "masbaha Website",
-    descEn: "Animated portfolio template with smooth scroll and theme system.",
-    descAr: "قالب بورتفوليو متحرك مع تمرير سلس ونظام ثيمات.",
-    longEn:
-      "Atlas is a refined portfolio template with cinematic scroll storytelling, layered GSAP timelines, and a flexible theme system that ships in light, dark and accent variants.",
-    longAr:
-      "أتلس قالب بورتفوليو فاخر بقصّ سرديّ عبر التمرير، تايملاينز GSAP طبقيّة، ونظام ثيمات مرن بإصدارات فاتحة وداكنة وأكسنت.",
-    highlightsEn: [
-      "GSAP-powered scroll storytelling",
-      "Light, dark & custom accent themes",
-      "MDX-driven case study pages",
-      "Edge-rendered for sub-50ms TTFB",
-    ],
-    highlightsAr: [
-      "سرد عبر التمرير مدعوم بـ GSAP",
-      "ثيمات فاتحة وداكنة وأكسنت مخصص",
-      "صفحات دراسات حالة بـ MDX",
-      "عرض على الـ Edge بـ TTFB أقل من 50ms",
-    ],
-    stack: ["Html", "css", "Js", "fontawesome"],
-    link: "https://website-misbaha-zekr.netlify.app/",
-    repo: "https://github.com/GalalElaasar9/Website-Misbaha.git",
-    cover: masbaa,
-    gallery: [ masbaa , photo , Elaasar , social , interior , food , SpecialDesign, travel],
-    category: "native",
+  id: "masbaa-website",
+  title: "Masbaha (Zikr) Website",
+  
+  descEn: "An Islamic website for digital tasbeeh and daily zikr counter.",
+  descAr: "موقع إسلامي للسبحة الإلكترونية وعدّ الأذكار اليومية.",
+  
+  longEn:
+    "A simple Islamic web application designed to help users perform digital tasbeeh (zikr counter) in an easy and calming interface. The project allows users to count dhikr, reset counters, and track their daily remembrance with a clean and minimal design built using HTML, CSS, and JavaScript.",
+  
+  longAr:
+    "تطبيق ويب إسلامي بسيط يساعد المستخدمين على استخدام سبحة إلكترونية لعدّ الأذكار بسهولة. يتيح التطبيق عدّ التسبيح، إعادة التعيين، ومتابعة الأذكار اليومية بواجهة هادئة وبسيطة باستخدام HTML و CSS و JavaScript.",
+  
+  highlightsEn: [
+    "Digital tasbeeh counter functionality",
+    "Simple and calm UI design",
+    "Reset and increment counters",
+    "Responsive design for all devices",
+  ],
+  
+  highlightsAr: [
+    "عداد سبحة إلكترونية",
+    "تصميم بسيط وهادئ",
+    "إمكانية إعادة التعيين والعد",
+    "تصميم متجاوب لكل الأجهزة",
+  ],
+  
+  stack: ["HTML", "CSS", "JavaScript", "Font Awesome"],
+  
+  link: "https://website-misbaha-zekr.netlify.app/",
+  repo: "https://github.com/GalalElaasar9/Website-Misbaha.git",
+  
+  cover: masbaa,
+  gallery: [masbaa, photo, Elaasar, social, interior, food, SpecialDesign, travel],
+  
+  category: "native",
   },
 ];
 

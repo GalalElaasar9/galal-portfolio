@@ -10,6 +10,7 @@ import weatherApp from "@/assets/weather-app.png";
 import youtubeClone from "@/assets/youtube-clone.png";
 import prayerTimes from "@/assets/prayer-times.png";
 import kanbanBoard from "@/assets/kanban-board.png";
+import insightStabilityCenter from "@/assets/insight-stability-center.png";
 import travel from "@/assets/travel.jpg";
 import SpecialDesign from "@/assets/Special Design.jpg";
 import food from "@/assets/food website.jpg";
@@ -25,6 +26,43 @@ import { useDeviceTier } from "@/hooks/use-device-tier";
 
 const projects: Project[] = [
   {
+    id: "insight-stability-center",
+    title: "Insight Stability Center",
+    
+    descEn: "A scientific research and laboratory data platform for managing industrial samples and analyzing test results in a structured environment.",
+    descAr: "منصة بحثية ومعملية لإدارة العينات الصناعية وتحليل نتائج الاختبارات في بيئة منظمة.",
+
+    longEn:
+      "Insight Stability Center is a scientific research and laboratory data management platform designed to handle industrial sample processing and analysis workflows. It enables structured registration of samples, systematic organization of test data, and clear presentation of analytical results. The system is built to support research-driven environments by ensuring data consistency, clarity, and traceability across all processed samples.",
+
+    longAr:
+      "Insight Stability Center هو نظام بحثي ومعملي لإدارة بيانات العينات الصناعية وعمليات التحليل. يتيح تسجيل العينات بشكل منظم، وتنظيم بيانات الاختبارات بطريقة منهجية، وعرض النتائج التحليلية بشكل واضح. تم تصميم النظام لدعم بيئات البحث العلمي من خلال ضمان دقة البيانات، وتنظيمها، وسهولة تتبعها.",
+
+    highlightsEn: [
+      "Scientific sample data management system",
+      "Structured laboratory test workflows",
+      "Accurate and traceable data organization",
+      "Research-oriented interface design",
+    ],
+    
+    highlightsAr: [
+      "نظام لإدارة بيانات العينات العلمية",
+      "تنظيم عمليات التحاليل المعملية",
+      "تنظيم دقيق وقابل للتتبع للبيانات",
+      "واجهة مصممة لبيئات البحث العلمي",
+    ],
+    
+    stack: ["React", "Vite", "TypeScript"],
+    
+    link: "https://insight-stability-center9.vercel.app/",
+    repo: "https://github.com/GalalElaasar9/insight-stability-center2.git",
+    
+    cover: insightStabilityCenter,
+    gallery: [insightStabilityCenter, kanbanBoard, youtubeClone, weatherApp, prayerTimes],
+    
+    category: "react",
+  },
+  {
   id: "kanban-board",
   title: "Kanban Board",
   
@@ -35,7 +73,7 @@ const projects: Project[] = [
     "A fully responsive Kanban board application that helps users organize tasks into columns like To Do, In Progress, and Done. The app supports drag and drop functionality, state management using Zustand, and type safety with TypeScript, providing a smooth and efficient task management experience.",
   
   longAr:" To Do و In Progress و Done تجربة إدارة مهام سلسة وفعالة يدعم السحب والإفلات ويساعد المستخدم فى تنظيم المهام عن طريق",
-  
+
   highlightsEn: [
     "Drag and drop task management",
     "State management with Zustand",

@@ -12,7 +12,6 @@ import prayerTimes from "@/assets/prayer-times.png";
 import travel from "@/assets/travel.jpg";
 import SpecialDesign from "@/assets/Special Design.jpg";
 import food from "@/assets/food website.jpg";
-import commerceImg from "@/assets/project-commerce.jpg";
 import portfolioImg from "@/assets/project-portfolio.jpg";
 import interior from "@/assets/interior.jpg";
 import social from "@/assets/social.jpg";
@@ -58,7 +57,7 @@ const projects: Project[] = [
     repo: "https://github.com/GalalElaasar9/youtube_clone.git",
     
     cover: youtubeClone,
-    gallery: [youtubeClone, weatherApp, saasImg, portfolioImg],
+    gallery: [youtubeClone, weatherApp, prayerTimes],
     
     category: "react",
   },

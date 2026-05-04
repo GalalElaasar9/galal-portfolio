@@ -9,6 +9,7 @@ import { useEffect, useMemo, useState } from "react";
 import weatherApp from "@/assets/weather-app.png";
 import youtubeClone from "@/assets/youtube-clone.png";
 import prayerTimes from "@/assets/prayer-times.png";
+import kanbanBoard from "@/assets/kanban-board.png";
 import travel from "@/assets/travel.jpg";
 import SpecialDesign from "@/assets/Special Design.jpg";
 import food from "@/assets/food website.jpg";
@@ -23,6 +24,42 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { useDeviceTier } from "@/hooks/use-device-tier";
 
 const projects: Project[] = [
+  {
+  id: "kanban-board",
+  title: "Kanban Board",
+  
+  descEn: "A task management Kanban board for organizing and tracking work items.",
+  descAr: " Kanban لوحة إدارة مهام لتنظيم وتتبع المهام بطريقة ",
+  
+  longEn:
+    "A fully responsive Kanban board application that helps users organize tasks into columns like To Do, In Progress, and Done. The app supports drag and drop functionality, state management using Zustand, and type safety with TypeScript, providing a smooth and efficient task management experience.",
+  
+  longAr:" To Do و In Progress و Done تجربة إدارة مهام سلسة وفعالة يدعم السحب والإفلات ويساعد المستخدم فى تنظيم المهام عن طريق",
+  
+  highlightsEn: [
+    "Drag and drop task management",
+    "State management with Zustand",
+    "Type-safe with TypeScript",
+    "Responsive and clean UI",
+  ],
+  
+  highlightsAr: [
+    "إدارة مهام بالسحب والإفلات",
+    "إدارة الحالة باستخدام Zustand",
+    "استخدام TypeScript لضمان الأمان",
+    "تصميم متجاوب ونظيف",
+  ],
+  
+  stack: ["React", "Zustand", "Vite", "TypeScript"],
+  
+  link: "https://kanban-board-smoky-zeta.vercel.app/",
+  repo: "https://github.com/GalalElaasar9/Kanban-board.git",
+  
+  cover: kanbanBoard,
+  gallery: [kanbanBoard, youtubeClone, weatherApp, prayerTimes],
+  
+  category: "react",
+  },
   {
     id: "youtube-clone",
     title: "Youtube Clone",

@@ -11,6 +11,7 @@ import youtubeClone from "@/assets/youtube-clone.png";
 import prayerTimes from "@/assets/prayer-times.png";
 import kanbanBoard from "@/assets/kanban-board.png";
 import insightStabilityCenter from "@/assets/insight-stability-center.png";
+import bloodBank from "@/assets/blood-bank.png";
 import travel from "@/assets/travel.jpg";
 import SpecialDesign from "@/assets/Special Design.jpg";
 import food from "@/assets/food website.jpg";
@@ -25,6 +26,46 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { useDeviceTier } from "@/hooks/use-device-tier";
 
 const projects: Project[] = [
+  {
+    id: "blood-bank",
+    title: "Blood Bank",
+
+    descEn:
+      "A blood donation and management platform that connects donors with hospitals and patients, making the blood request and donation process faster and more organized.",
+
+    descAr:
+      "منصة لإدارة التبرع بالدم تربط بين المتبرعين والمستشفيات والمرضى لتسهيل وتنظيم عمليات طلب والتبرع بالدم.",
+
+    longEn:
+      "Blood Bank is a modern blood donation management platform designed to simplify communication between blood donors, patients, and healthcare organizations. The system allows users to register as donors, search for available blood types, and manage donation requests efficiently. It provides a clean and responsive user experience with secure authentication, organized data handling, and scalable architecture suitable for real-world healthcare workflows.",
+
+    longAr:
+      "Blood Bank هو نظام حديث لإدارة التبرع بالدم تم تصميمه لتسهيل التواصل بين المتبرعين والمرضى والجهات الطبية. يتيح النظام تسجيل المتبرعين، والبحث عن فصائل الدم المتاحة، وإدارة طلبات التبرع بشكل منظم وفعال. يوفر تجربة استخدام سهلة ومتجاوبة مع نظام تسجيل دخول آمن وتنظيم واضح للبيانات وهيكلة قابلة للتوسع تناسب الأنظمة الطبية الواقعية.",
+
+    highlightsEn: [
+      "Blood donor and request management system",
+      "Authentication and user role handling with Clerk",
+      "Responsive and user-friendly interface",
+      "Organized healthcare data management",
+    ],
+
+    highlightsAr: [
+      "نظام لإدارة المتبرعين وطلبات الدم",
+      "إدارة تسجيل الدخول والصلاحيات باستخدام Clerk",
+      "واجهة استخدام متجاوبة وسهلة الاستخدام",
+      "تنظيم وإدارة بيانات طبية بشكل منظم",
+    ],
+
+    stack: ["React", "Vite", "TypeScript", "Clerk", "Hygraph"],
+
+    link: "https://blood-bank-al-salhiyah-university.netlify.app/",
+    repo: "https://github.com/GalalElaasar9/Blood-Bank.git",
+
+    cover: bloodBank,
+    gallery: [ bloodBank, insightStabilityCenter, kanbanBoard, youtubeClone, weatherApp, prayerTimes,
+    ],
+    category: "react",
+  },
   {
     id: "insight-stability-center",
     title: "Insight Stability Center",

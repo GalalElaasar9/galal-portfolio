@@ -352,7 +352,7 @@ const projects: Project[] = [
   
   stack: ["HTML", "CSS", "JavaScript", "Font Awesome"],
   
-  link: "https://traveling-website-9999.netlify.app/",
+  link: "https://travel-tau-gules.vercel.app/",
   repo: "https://github.com/GalalElaasar9/travel.git",
   
   cover: travel,

@@ -208,7 +208,7 @@ const projects: Project[] = [
     repo: "https://github.com/GalalElaasar9/weather-app.git",
     
     cover: weatherApp,
-    gallery: [weatherApp, youtubeClone, prayerTimes],
+    gallery: [weatherApp, youtubeClone, prayerTimes , kanbanBoard, insightStabilityCenter, bloodBank],
     
     category: "react",
   },
@@ -245,7 +245,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/prayer-times.git",
   
   cover: prayerTimes,
-  gallery: [prayerTimes, youtubeClone, weatherApp],
+  gallery: [prayerTimes, youtubeClone, weatherApp, kanbanBoard, insightStabilityCenter, bloodBank],
   
   category: "react",
   },
@@ -282,7 +282,7 @@ const projects: Project[] = [
     repo: "https://github.com/GalalElaasar9/Social-Media-Elaasar.git",
     
     cover: social,
-    gallery: [social, education, interior, food, SpecialDesign, travel],
+    gallery: [social, education, interior, food, SpecialDesign, travel , Elaasar, photo, masbaa],
     
     category: "native",
   },
@@ -319,7 +319,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/Education-website.git",
   
   cover: education,
-  gallery: [education, social, interior, food, SpecialDesign, travel],
+  gallery: [education, social, interior, food, SpecialDesign, travel , Elaasar, photo, masbaa],
   
   category: "native",
   },
@@ -356,7 +356,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/travel.git",
   
   cover: travel,
-  gallery: [travel, SpecialDesign, food],
+  gallery: [travel, SpecialDesign, food, interior, social, education, Elaasar, photo, masbaa],
   
   category: "native",
   },
@@ -393,7 +393,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/Special-Design.git",
   
   cover: SpecialDesign,
-  gallery: [SpecialDesign, travel, food],
+  gallery: [SpecialDesign, travel, food, interior, social, education, Elaasar, photo, masbaa],
   
   category: "native",
   },
@@ -430,8 +430,8 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/Food-Website99.git",
   
   cover: food,
-  gallery: [food, SpecialDesign, travel],
-  
+  gallery: [food, SpecialDesign, travel, interior, social, education, Elaasar, photo, masbaa],
+
   category: "native",
   },
   {
@@ -467,7 +467,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/Interior-Project.git",
   
   cover: interior,
-  gallery: [interior, food, SpecialDesign, travel],
+  gallery: [interior, food, SpecialDesign, travel, Elaasar, photo, masbaa],
   
   category: "native",
   },
@@ -504,7 +504,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/Social-Media-Elaasar.git",
   
   cover: Elaasar,
-  gallery: [Elaasar, social, interior, food, SpecialDesign, travel],
+  gallery: [Elaasar, social, interior, food, SpecialDesign, travel, photo, masbaa],
   
   category: "native",
   },
@@ -541,7 +541,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/Photography-Portfolio-Website.git",
   
   cover: photo,
-  gallery: [photo, Elaasar, social, interior, food, SpecialDesign, travel],
+  gallery: [photo, Elaasar, social, interior, food, SpecialDesign, travel, masbaa, education],
   
   category: "native",
   },
@@ -578,7 +578,7 @@ const projects: Project[] = [
   repo: "https://github.com/GalalElaasar9/Website-Misbaha.git",
   
   cover: masbaa,
-  gallery: [masbaa, photo, Elaasar, social, interior, food, SpecialDesign, travel],
+  gallery: [masbaa, photo, Elaasar, social, interior, food, SpecialDesign, travel, education],
   
   category: "native",
   },
